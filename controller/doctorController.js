@@ -105,8 +105,8 @@ export const findDoctor = async(req,res)=>{
         const {query} = req.body
         
         try{
-            const shortByName = await Doctor.find({name:{ $regex:query, $options: 'i' }}).exec()
-            const shortBySpecialization = await Doctor.find({specialization:{ $regex:query, $options: 'i' }}).exec()
+            const shortByName = await Doctor.find({isApproved:'approved',name:{ $regex:query, $options: 'i' }}).exec()
+            const shortBySpecialization = await Doctor.find({isApproved:'approved',specialization:{ $regex:query, $options: 'i' }}).exec()
             res.json({data:[...shortByName,...shortBySpecialization]})
         }catch{
             return res.status(501).json({status:false,message:'Internal server error'})
