@@ -119,7 +119,6 @@ export const findDoctor = async(req,res)=>{
 export const approveDoctor = async(req,res)=>{
     
     const {id,status} = req.body
-    console.log(status)
     try{
         await Doctor.updateOne({_id:new ObjectId(id)},{$set:{isApproved:status}})
         res.status(200).json({status:true,message:'Doctor status changed'})

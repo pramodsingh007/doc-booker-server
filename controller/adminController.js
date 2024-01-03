@@ -5,7 +5,6 @@ import bcrypt from 'bcryptjs';
 
 
 export const getAdmin = async(req,res)=>{
-    console.log(req.cookie)
     const id = req.params.id
     try{
         if(id.length < 24){
@@ -73,7 +72,6 @@ export const deleteAdmin = async(req,res)=>{
 
 export const getAdminProfile = async(req,res)=>{
     const id = req.id
-    console.log(id)
     try{
         //if invalid user id
         if(id.length < 24){
