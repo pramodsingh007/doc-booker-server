@@ -111,7 +111,7 @@ export const logoutUser = (req,res)=>{
 
 
 export const verifyUser = (req,res)=>{
-    const {token} = req.cookies
+    const token = req.headers.authorization.split(' ')[1]
    try{
     if(!token){
         return res.status(401).json({status:false,message:'User not authenticated'})
